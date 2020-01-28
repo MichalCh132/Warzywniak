@@ -1,0 +1,150 @@
+<div class="login">
+    <div *ngIf="loginStatus=='REJECTED'">
+        <label>Email :</label><input type="text" [(ngModel)]="email"><br />
+        <label>Hasło :</label><input type="password" [(ngModel)]="password">
+        <br />
+        <button (click)="loginUser()">Zaloguj</button>
+        <button (click)="loginStatus='REGISTERATION'">Zarejestruj</button>
+    </div>
+    <div *ngIf="loginStatus=='REGISTERATION'">
+        <table>
+            <tr>
+                <td>Email :</td>
+                <td><input type="text" [(ngModel)]="email"></td>
+            </tr>
+            <tr>
+                <td>Hasło :</td>
+                <td><input type="password" [(ngModel)]="password"></td>
+            </tr>
+            <tr>
+                <td>Numer telefonu :</td>
+                <td><input type="number" [(ngModel)]="phone"></td>
+            </tr>
+            <tr>
+                <td>Imie :</td>
+                <td><input type="text" [(ngModel)]="name"></td>
+            </tr>
+        </table>
+        <button (click)="singup()">Zarejstruj</button>
+    </div>
+
+    <div *ngIf="loginStatus=='ACCEPTED'">
+        Witaj w panelu uzytkownika:
+        <br />
+        <button (click)="showUserProducts()">Wyswietl historie zamowien</button>
+        <table>
+            <tr *ngFor="let record of records">
+                <td>{{record.name}} {{record.quantity | number : '1.0-2'}} Kg {{record.price | number : '1.0-2'}} Zł
+                    {{record.data}}</td>
+            </tr>
+        </table>
+
+        <button (click)="logout()">Wyloguj</button><button (click)="deleteAccount()">Usun konto</button>
+    </div>
+<div *ngIf="loginStatus=='ADMIN'">
+    <h2>Witam w panelu admina :)</h2>
+    <br />
+    <button (click)="showUsers()">Uzytkownicy</button>
+    <button (click)="showProducts()">Sklep</button>
+    <button (click)="logout()">Wyloguj</button>
+    <div [ngSwitch]="switchAdminConent">
+        <div *ngSwitchCase="1">
+            <br />
+            <ul *ngFor="let user of users">
+                <li>{{user.id_user}} {{user.name}} {{user.phone}} {{user.email}} </li>
+            </ul>
+            Podejrzyj historię zakupów (po ID):
+            <input type="number" [(ngModel)]="choosenUserId">
+            <button (click)="showUserHistory(choosenUserId)">Szukaj</button>
+            <tr>
+                <td>Nazwa:</td>
+                <td>Cena:</td>
+                <td>Ilosc:</td>
+                <td>Data:</td>
+            </tr>
+            <tr *ngFor="let item of records">
+                <td>{{item.name}}</td>
+                <td>{{item.price}}</td>
+                <td>{{item.quantity}}</td>
+                <td>{{item.data}}</td>
+            </tr>
+        </div>
+        <div *ngSwitchCase="2">
+            <br />
+            <table>
+                <tr>
+                    <td>ID:</td>
+                    <td>Nazwa:</td>
+                    <td>Cena:</td>
+                    <td>Opis</td>
+                    <td>Dostepnosc:</td>
+                </tr>
+                <tr *ngFor="let item of products">
+                    <td>{{item.id_item}}</td>
+                    <td>{{item.name}}</td>
+                    <td>{{item.price}}</td>
+                    <td>{{item.describe}}</td>
+                    <td>{{formatter(item.available)}}</td>
+                </tr>
+            </table>
+            <button (click)="switchShopContent=1">Modyfikuj produkty po ID</button>
+            <button (click)="switchShopContent=2">Dodaj nowy</button>
+            <br/>
+            <div [ngSwitch]="switchShopContent">
+                <div *ngSwitchCase="1">
+
+                    <table>
+                        <tr>
+                            <td>Id :</td>
+                            <td><input type="number" [(ngModel)]="item.id_item"></td>
+                        </tr>
+                        <tr>
+                            <td>Nazwa :</td>
+                            <td><input type="text" [(ngModel)]="item.name"></td>
+                        </tr>
+                        <tr>
+                            <td>Cena :</td>
+                            <td><input type="number" [(ngModel)]="item.price"></td>
+                        </tr>
+                        <tr>
+                            <td>Dostepnosc :</td>
+                            <td><input type="checkbox" [(ngModel)]="item.available" name="checkbox"></td>
+                        </tr>
+                        <tr>
+                            <td>Opis :</td>
+                            <td><input type="text" [(ngModel)]="item.describe"></td>
+                        </tr>
+                    </table>
+                    <button (click)="updateProduct()">Modyfikuj</button>
+                </div>
+                <div *ngSwitchCase="2">
+                    <table>
+                        <tr>
+                            <td>Nazwa :</td>
+                            <td><input type="text" [(ngModel)]="item.name"></td>
+                        </tr>
+                        <tr>
+                            <td>Cena :</td>
+                            <td><input type="number" [(ngModel)]="item.price"></td>
+                        </tr>
+                        <tr>
+                            <td>Dostepnosc :</td>
+                            <td><input type="checkbox" [(ngModel)]="item.available" name="checkbox"></td>
+                        </tr>
+                        <tr>
+                            <td>Opis :</td>
+                            <td><input type="text" [(ngModel)]="item.describe"></td>
+                        </tr>
+                    </table>
+                    <button (click)="addProduct()">Dodaj</button>
+                </div>
+
+            </div>
+
+
+
+        </div>
+
+    </div>
+</div>
+</div>

@@ -1,0 +1,9 @@
+img{
+    max-width: 200px;
+    max-height: 175px;
+    float:right;
+}
+td{
+    text-align: center;
+    width: 25%;
+}

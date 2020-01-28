@@ -1,0 +1,11 @@
+<div  class="{{body}}" (click)="bodyChange()">
+    <div class="{{zawartosc}}"><br/>
+        <div class="suwak my-custom-scrollbar-primary">
+           
+        <ul *ngFor="let item of itemList;let i = index">
+            <li>{{item.name}} {{getAmount(i)  | number : '1.0-2'}} Kg</li>
+        </ul>
+            </div>
+        <button (click)="buy()"  class="btn btn-success">Zamow</button>
+    </div>
+</div>

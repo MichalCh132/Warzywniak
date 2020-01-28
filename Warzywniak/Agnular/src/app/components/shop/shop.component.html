@@ -1,0 +1,10 @@
+<table class="table">
+    <tbody>
+        <div *ngFor="let item of itemList;index as i ">
+            <div *ngIf="item.available==1">
+                <app-item [item]="item" [idnumber]='i'></app-item>
+            </div>
+        </div>
+    </tbody>
+
+</table>

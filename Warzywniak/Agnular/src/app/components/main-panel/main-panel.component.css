@@ -1,0 +1,10 @@
+.mainPanel{
+    position: relative;
+    background-color: whitesmoke;
+    margin-left: 18%;
+    height: 100%;
+    min-height: 700px;
+    width:63%;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+}

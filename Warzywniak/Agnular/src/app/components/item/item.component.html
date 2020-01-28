@@ -1,0 +1,9 @@
+<tr>
+    <td>{{item.name}}</td>
+    <td> {{item.describe}}</td>
+    <td rowspan="2"><img src={{item.image}}></td>
+</tr>
+<tr>
+    <td> Ilosc ( Kg ):<br/> <input type="number" id={{idnumber}} step="0.1" [(ngModel)]="amount" ></td>
+    <td> {{item.price}} / Kg <br/><button class="btn btn-success"  (click)="addItem()"> Dodaj do koszyka </button></td>
+</tr>

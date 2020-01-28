@@ -1,0 +1,73 @@
+
+.bodymax{
+    height:400px;
+    position: fixed;
+    margin-top:105px;
+    background-color:whitesmoke;
+    border-radius: 5px;
+    z-index: 1;
+    animation-name: widthAnimation1;
+    animation-duration:  1s;
+    width:180px;
+
+}
+.bodymin{
+    height:400px;
+    position: fixed;
+    margin-top:105px;
+    background-color:#5f5f5f;
+    border-radius: 5px;
+    z-index: 1;
+    animation-name: widthAnimation2;
+    animation-duration: 1s;
+    width:30px;
+}
+.none{
+    display:none;
+}
+.full{
+    height:100%;
+    width:100%;
+    display:block;
+    border-radius: 50px;
+}
+button{
+  display: block;
+  margin-left: auto;
+  margin-top: 20px;
+  margin-right: auto
+}
+.suwak{
+  overflow-y:scroll;
+  overflow-x:hidden;
+  height:300px !important;
+  position:relative;
+  top: 20px;
+  left:-8px;
+}
+/* width */
+::-webkit-scrollbar {
+  width: 20px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px grey;
+  border-radius: 10px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: rgb(73, 63, 68);
+  border-radius: 10px;
+}
+@keyframes widthAnimation1
+      {
+        0% { width:30px; }
+        100% { width:180px; }
+      }
+@keyframes widthAnimation2
+      {
+        0% { width:180px; }
+        100% { width:30px; }
+      }

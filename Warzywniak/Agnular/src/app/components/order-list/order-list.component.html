@@ -1,0 +1,8 @@
+<ul *ngFor="let item of itemList;let i = index">
+    <li>{{item.name}} {{getAmount(i)  | number : '1.0-2'}} Kg * {{item.price}} = {{getAmount(i) * item.price | number : '1.0-2'}}
+        <button class="btn btn-danger" (click)="delete(i)">Usuń</button>
+    </li>
+</ul>
+Razem: {{totalPrice() | number : '1.0-2'}} zł
+
+<button (click)="sendOrder()">Potwierdź zamówienie</button> <button (click)="deleteAll()">Anuluj zamówienie</button> 

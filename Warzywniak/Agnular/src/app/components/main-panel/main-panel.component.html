@@ -1,0 +1,10 @@
+<div class="mainPanel">
+    <div [ngSwitch]="switchText">
+        <app-news *ngSwitchCase="'news'"></app-news>
+        <app-shop *ngSwitchCase="'shop'"></app-shop>
+        <app-calendar *ngSwitchCase="'calendar'"></app-calendar>
+        <app-login *ngSwitchCase="'loginPanel'"></app-login>
+        <app-order-list *ngSwitchCase="'orderList'"></app-order-list>
+        <app-login *ngSwitchDefault></app-login>
+    </div>
+</div>
